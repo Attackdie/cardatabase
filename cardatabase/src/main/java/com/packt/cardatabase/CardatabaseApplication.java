@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CardatabaseApplication {
 
 	public static void main(String[] args) {
+		//이 주석을 추가하면 애플리케이션 재시작됨
 		SpringApplication.run(CardatabaseApplication.class, args);
 	}
 
