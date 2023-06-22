@@ -1,19 +1,75 @@
 package com.packt.cardatabase;
 
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-//2023 06 21 스프링 시큐리티 구성되는 클래스 생성
-//보호가 되는 앤드포인트
+import com.packt.cardatabase.service.UserDetailsServiceImpl;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
-	//2023 06 21
-	//보호되지 않는 앤드포인트 메서드
+	@Autowired
+	private UserDetailsServiceImpl userDetailsService;
+
+	@Autowired
+	private AuthenticationFilter authenticationFilter;
+
+	@Autowired
+	private AuthEntryPoint exceptionHandler;
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable().cors().and()
+		.sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+		.authorizeRequests()
+		.antMatchers(HttpMethod.POST, "/login").permitAll()
+		.anyRequest().authenticated().and()
+		.exceptionHandling()
+		.authenticationEntryPoint(exceptionHandler).and()
+		.addFilterBefore(authenticationFilter, 
+				UsernamePasswordAuthenticationFilter.class);
 	}	
+//2023 06 22 클래스에 전역 CORS 필터 추가
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		CorsConfiguration config = new CorsConfiguration();
+		config.setAllowedOrigins(Arrays.asList("*"));
+		config.setAllowedMethods(Arrays.asList("*"));
+		config.setAllowedHeaders(Arrays.asList("*"));
+		config.setAllowCredentials(false);
+		config.applyPermitDefaultValues();
+
+		source.registerCorsConfiguration("/**", config);
+		return source;
+	}	
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth)
+			throws Exception  {
+		auth.userDetailsService(userDetailsService)
+		.passwordEncoder(new BCryptPasswordEncoder());
+	}
+
+	@Bean
+	public AuthenticationManager getAuthenticationManager() throws 
+	Exception {
+		return authenticationManager();
+	}
 }

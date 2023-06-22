@@ -13,19 +13,23 @@ import com.packt.cardatabase.domain.Car;
 import com.packt.cardatabase.domain.CarRepository;
 import com.packt.cardatabase.domain.Owner;
 import com.packt.cardatabase.domain.OwnerRepository;
+import com.packt.cardatabase.domain.User;
+import com.packt.cardatabase.domain.UserRepository;
 
 @SpringBootApplication
 public class CardatabaseApplication implements CommandLineRunner {	
 	private static final Logger logger = 
 			LoggerFactory.getLogger(CardatabaseApplication.class);
-	  
-    @Autowired
-    private CarRepository repository;
-    
-    @Autowired
-    private OwnerRepository orepository;
 
-	
+	@Autowired
+	private CarRepository repository;
+
+	@Autowired
+	private OwnerRepository orepository;
+
+	@Autowired
+	private UserRepository urepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(CardatabaseApplication.class, args);
 	}
@@ -45,9 +49,14 @@ public class CardatabaseApplication implements CommandLineRunner {
 		Car car3 = new Car("Toyota", "Prius", "Silver", 
 				"KKO-0212", 2020, 39000, owner2);
 		repository.saveAll(Arrays.asList(car1, car2, car3));
-                  
+
 		for (Car car : repository.findAll()) {
 			logger.info(car.getBrand() + " " + car.getModel());
 		}
+
+		urepository.save(new User("user", 
+				"$2a$12$falC.0ivgRew4Hyxdl1he.SN6BsBwae8AQyEJyA2SPIdpLqjhU.Hq","USER"));
+		urepository.save(new User("admin", 
+				"$2a$12$4L3RRiY5QTQ5MgfnBxMx8ekauw4ELBw8/q8CtV1CZBrqTkRQGefHC", "ADMIN"));
 	}
 }
