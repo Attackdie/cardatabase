@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <div className="black-nav">
-     <h3>카 센터 블로그 테스트11111</h3>
+     <h3>카 센터 블로그 테스트1111111</h3>
       </div>
       <h4>{ car }</h4>
     </div>
