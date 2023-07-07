@@ -1,13 +1,15 @@
+import React from 'react';
 // import React, { useState } from 'react';
 // import './App.css';
 
 function App() {
   return (
-    <div>
+    <React.Fragment>
 
     <h1>Hello World</h1>
     <p>This is my First React Componet</p>
-    </div>
+    </React.Fragment>
+
   );
 }
 //   const [keyword, setKeyword] = useState('');
