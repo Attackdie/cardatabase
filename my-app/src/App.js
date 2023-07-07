@@ -1,17 +1,36 @@
-import React from 'react';
-// import React, { useState } from 'react';
+// import React from 'react';
+import React, { useState } from 'react';
 // import './App.css';
 
-function App() {
+
+//2023 07 07 버튼 카운트 기능 테스트 
+function Counter() {
+  //초기값이 0인 카운트 상태
+  const [count, setCount] = useState(0);
+
   return (
-    <React.Fragment>
-
-    <h1>Hello World</h1>
-    <p>This is my First React Componet</p>
-    </React.Fragment>
-
+  <div>
+    <p>Counter = {count}</p>
+    <button onClick={() => setCount(count + 1) }>
+        Increment
+      </button>
+  </div>
   );
-}
+};
+
+export default Counter;
+
+
+// function App() {
+//   return (
+//     <>
+
+//     <h1>Hello World</h1>
+//     <p>This is my First React Componet</p>
+//     </>
+
+//   );
+// }
 //   const [keyword, setKeyword] = useState('');
 //   const [data, setData] = useState([]);
 
@@ -45,4 +64,4 @@ function App() {
 //   );
 // }
 
-export default App;
+// export default App;
