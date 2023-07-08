@@ -64,9 +64,9 @@ function App() {
   const [keyword, setKeyword] = useState('');
   const [data, setData] = useState([]);
   const columns = [ 
-    {field: 'full_name'},
-    {field: 'html_url'},
-    {field: 'owner.login'}
+    {field: 'full_name', sortable: true, filter: true},
+    {field: 'html_url', sortable: true, filter: true},
+    {field: 'owner.login', sortable: true, filter: true}
   ]
 
   const fetchData = () => {
@@ -80,10 +80,12 @@ function App() {
     <div className="App">
       <input value={keyword} onChange={e => setKeyword(e.target.value)} />
       <button onClick={fetchData}>Fetch</button>
-      <div className='ag-theme-material' style={{height : 500, wibth: '90%'}}>
+      <div className='ag-theme-material' style={{height : 500, wibth: '120%'}}>
         <AgGridReact
         rowData={data}
         columnDefs={columns}
+        pagination={true}
+        paginationPageSize={8}
         />
     </div>
     </div>
