@@ -8,16 +8,17 @@ import { DialogTitle } from "@mui/material/";
 
 function AddItem(props) {
     const [open, setOpen] = React.useState(false);
+    
     const handleOpen = () => {
         setOpen(true);
     }
+    const handleClose = () => {
+        setOpen(false);
     const addItem = () => {
         props.addItem(item);
         setItem({product: '', amount: ''}); //텍스트 필드를 비움
         handleClose();
     }
-    const handleClose = () => {
-        setOpen(false);
     }
     const handleChange = (e) => {
         setItem({...item, [e.target.name]: e.target.value})
@@ -29,7 +30,7 @@ function AddItem(props) {
 
     return(
         <div>
-            <Button onClick={handleOpen}>
+            <Button variant="outlined" onClick={handleOpen}>
                 Add item
             </Button>
             <Dialog open={open} onClose={handleClose}>
@@ -38,7 +39,7 @@ function AddItem(props) {
                     <TextField value={item.product} margin="dense"
                     onChange={handleChange} name="product" 
                     label="Product" fullWidth />
-                     <TextField value={item.product} margin="dense"
+                     <TextField value={item.amount} margin="dense"
                     onChange={handleChange} name="amount" 
                     label="Amount" fullWidth />
                 </DialogContent>
