@@ -18,6 +18,7 @@ function App() {
   const addItem = (item) => {
     setItems([item, ...items]);
   }
+  
   return (
     <Container>
       <AppBar position='static'>
@@ -34,8 +35,8 @@ function App() {
         items.map((item, index) =>
         <ListItem key={index} divider>
           <ListItemText
-          primary={item.product}
-          secondary={item.amount}/>
+            primary={item.product}
+            secondary={item.amount}/>
         </ListItem>
         )
         }
