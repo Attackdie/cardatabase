@@ -10,7 +10,7 @@
 //import net.minidev.json.JSONObject;
 //
 //public class CompanyInfoAPI {
-////
+////1
 //    // 데이터베이스 연결 정보
 //    private static final String DB_URL = "jdbc:mariadb://localhost:3306/cardb";
 //    private static final String DB_USER = "root";
