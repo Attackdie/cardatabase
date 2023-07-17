@@ -34,16 +34,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		//2023 07 17 추가
 		http.csrf().disable().cors().and()
-		.sessionManagement()
-		.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-		.authorizeRequests()
-		.antMatchers(HttpMethod.POST, "/login").permitAll()
-		.anyRequest().authenticated().and()
-		.exceptionHandling()
-		.authenticationEntryPoint(exceptionHandler).and()
-		.addFilterBefore(authenticationFilter, 
-				UsernamePasswordAuthenticationFilter.class);
+		.authorizeRequests().anyRequest().permitAll();
+		//2023 07 17 임시 주석처리
+//		http.csrf().disable().cors().and()
+//		.sessionManagement()
+//		.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+//		.authorizeRequests()
+//		.antMatchers(HttpMethod.POST, "/login").permitAll()
+//		.anyRequest().authenticated().and()
+//		.exceptionHandling()
+//		.authenticationEntryPoint(exceptionHandler).and()
+//		.addFilterBefore(authenticationFilter, 
+//				UsernamePasswordAuthenticationFilter.class);
 	}	
 //2023 06 22 클래스에 전역 CORS 필터 추가
 	@Bean
