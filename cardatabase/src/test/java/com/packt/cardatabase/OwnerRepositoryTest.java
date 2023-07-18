@@ -16,7 +16,7 @@ public class OwnerRepositoryTest {
 	@Test
 	void saveOwner() {
 		repository.save(new Owner("Lucy", "Smith"));
-		assertThat(repository.findByFirstname("Lucy"));
+		assertThat(repository.findByFirstname("Lucy").isPresent()).isTrue();
 	}
 	
 	@Test

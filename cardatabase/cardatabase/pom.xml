@@ -82,6 +82,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!-- 2023.07.17 Jar 라이브러리 생성 -->
+				<configuration>
+				<executable>true</executable>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
