@@ -16,4 +16,5 @@
 
 
 ### 전체적인 구성도
-https://user-images.githubusercontent.com/33794732/68990264-8f43f900-0894-11ea-9b99-78a66e539d54.png
+![image](https://github.com/Attackdie/cardatabase/assets/115523526/43bada2a-8934-4152-bf6d-ca59a05ad91e)
+
