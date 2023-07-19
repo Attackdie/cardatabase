@@ -13,3 +13,7 @@
 ### 팀 정보
 
 - 1인 웹 개인 프로젝트
+
+
+### 전체적인 구성도
+https://user-images.githubusercontent.com/33794732/68990264-8f43f900-0894-11ea-9b99-78a66e539d54.png
