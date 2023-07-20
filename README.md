@@ -8,7 +8,7 @@
 
 - HTML + React.js + Node.js
 - Java +Spring Framework + Spring Boot + MariaDB
-- Postman + Eclips + VScode
+- Postman + Eclipse + VScode
 
 ### 팀 정보
 
@@ -60,4 +60,4 @@
 ![image](https://github.com/Attackdie/cardatabase/assets/115523526/344634f2-94cb-455c-b941-f0496a35f829)
 ![image](https://github.com/Attackdie/cardatabase/assets/115523526/49562bd7-f3b9-434c-9cba-cb710dfd181e)
 
-- FrontEnd Delete 및 수정
+- FrontEnd Delete 및 Update
